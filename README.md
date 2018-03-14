@@ -79,7 +79,7 @@ Node.js + ES6 + Elasticsearch
 
 ### Populate
 
-1. use the package [car-api] to get all records in json format
+1. use the package [node-car-api](https://github.com/92bondstreet/node-car-api) to get all records in json format
 1. index - with bulk - all records to Elasticsearch
 
 ### List of suv
