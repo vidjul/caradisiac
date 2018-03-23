@@ -1,5 +1,6 @@
 const elasticsearch = require('elasticsearch');
 const client = require('../connection');
+const {getBrands, getModels} = require('node-car-api');
 
 module.exports = async function (req, res) {
     let records = [];
@@ -26,7 +27,7 @@ module.exports = async function (req, res) {
     console.log('Starting indexing in elasticsearch')
     client.bulk({ body: reqBody }, (err, resp) => {
         if (err) {
-            res.send(err)
+            res.status(500).send(err)
         }
         else {
             res.send('Data has been populated');
