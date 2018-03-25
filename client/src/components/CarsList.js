@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
+import { Card, CardTitle, Row, Col } from 'react-materialize';
 
 class CarsList extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
         window.addEventListener('scroll', this.onScroll, false);
@@ -25,17 +23,19 @@ class CarsList extends Component {
     render() {
         let rows = []
         let elem;
-        if (this.props.cars) {;
+        if (this.props.cars) {
             this.props.cars.forEach((car, index) => {
                 elem =
-                    <div key={index}>
-                        <p>{car.name} </p>
-                        <p>{car.volume} </p>
-                        <img src={car.image} />
-                    </div>
+                    <Col s={4} key={index}>
+                        <Card
+                            header={<CardTitle image={car.image || 'http://via.placeholder.com/260x195'}>{car.model}</CardTitle>}
+                            actions={[<a href={`http://www.caradisiac.com/modele--${car.model.toLowerCase().replace(/ /g,'-')}`} key={index}>Check on caradisiac</a>]}>
+                            {car.name} / Volume:  {car.volume}
+                        </Card>
+                    </Col>
                 rows.push(elem);
             });
-            return rows;
+            return <Row>{rows}</Row>;
         }
         return null;
     }

@@ -14,3 +14,5 @@ app.get('/suv', (req,res) => {
 app.listen(9292, () => {
     console.log('Server has started!');
 });
+
+app.timeout = 36000;
